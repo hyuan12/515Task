@@ -37,17 +37,13 @@ def bfs(graph):
         bfs_helper(visited, graph, node)
 
 
-def min_num(visited, graph):
-    if len(visited) == len(graph.keys()):
-        return
-    min_node = min([key for key in graph.keys() if key not in visited])
-    return min_node
-
 def bfs_helper(visited, graph, node):
     queue = collections.deque([node])
     while queue:
         cur_node = queue.popleft()
         print(cur_node)
+        if cur_node is not graph.keys():
+            continue
         for neighbor in graph[cur_node]:
             if neighbor in visited:
                 continue
