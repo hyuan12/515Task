@@ -11,6 +11,7 @@ def dfs_helper(visited, graph, res, node):
         visited.add(node)
         res.append(node)
         if node not in graph.keys():
+            print(node)
             return
         stack = graph[node]
         stack.reverse()
