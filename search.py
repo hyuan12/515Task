@@ -1,20 +1,10 @@
 def dfs(graph):
     visited = set()
     res = []
-    flag = 0
     while min_num(visited, graph) is not None:
         node = min_num(visited, graph)
-        if flag == 0:
-            flag = 1
+
         dfs_helper(visited, graph, res ,node)
-
-    return res
-
-def min_num(visited, graph):
-    if len(visited) >= len(graph.keys()):
-        return
-    min_node = min([key for key in graph.keys() if key not in visited])
-    return min_node
 
 def dfs_helper(visited, graph, res, node):
     if node not in visited:
@@ -24,6 +14,12 @@ def dfs_helper(visited, graph, res, node):
         stack.reverse()
         for neighbour in stack:
             dfs_helper(visited, graph, res, neighbour)
+
+def min_num(visited, graph):
+    if len(visited) >= len(graph.keys()):
+        return
+    min_node = min([key for key in graph.keys() if key not in visited])
+    return min_node
             
             
 import collections
