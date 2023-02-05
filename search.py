@@ -26,7 +26,6 @@ def dfs_helper(visited, graph, res, node):
             dfs_helper(visited, graph, res, neighbour)
             
             
-
 import collections
 
 def bfs(graph):
@@ -39,14 +38,12 @@ def bfs(graph):
             visited.add(node)
         bfs_helper(visited, graph, node)
 
-
-
 def bfs_helper(visited, graph, node):
     queue = collections.deque([node])
     while queue:
         cur_node = queue.popleft()
         print(cur_node)
-        if cur_node is not graph.keys():
+        if cur_node not in graph.keys():
             visited.add(cur_node)
             continue
         for neighbor in graph[cur_node]:
