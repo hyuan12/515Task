@@ -31,23 +31,23 @@ import collections
 
 def bfs(graph):
     visited = set()
-    flag = 0
     while min_num(visited, graph) is not None:
         node = min_num(visited, graph)
-        if flag == 0:
-            flag = 1
-            visited.add(node)
+        visited.add(node)
         bfs_helper(visited, graph, node)
 
-    print(visited)
-    return [visited]
 
+def min_num(visited, graph):
+    if len(visited) == len(graph.keys()):
+        return
+    min_node = min([key for key in graph.keys() if key not in visited])
+    return min_node
 
 def bfs_helper(visited, graph, node):
     queue = collections.deque([node])
     while queue:
         cur_node = queue.popleft()
-
+        print(cur_node)
         for neighbor in graph[cur_node]:
             if neighbor in visited:
                 continue
