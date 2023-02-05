@@ -12,6 +12,7 @@ def dfs_helper(visited, graph, res, node):
         res.append(node)
         stack = graph[node]
         stack.reverse()
+        print(node)
         for neighbour in stack:
             dfs_helper(visited, graph, res, neighbour)
 
