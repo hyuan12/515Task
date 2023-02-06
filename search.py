@@ -1,15 +1,13 @@
+#DFS
 def dfs(graph):
     visited = set()
-    res = []
     while min_num(visited, graph) is not None:
         node = min_num(visited, graph)
+        dfs_helper(visited, graph, node)
 
-        dfs_helper(visited, graph, res ,node)
-
-def dfs_helper(visited, graph, res, node):
+def dfs_helper(visited, graph, node):
     if node not in visited:
         visited.add(node)
-        res.append(node)
         if node not in graph.keys():
             print(node)
             return
@@ -17,24 +15,22 @@ def dfs_helper(visited, graph, res, node):
         stack.reverse()
         print(node)
         for neighbour in stack:
-            dfs_helper(visited, graph, res, neighbour)
-
+            dfs_helper(visited, graph, neighbour)
+            
+#find that smallest ndoe that hasn't been visited
 def min_num(visited, graph):
     if len(visited) >= len(graph.keys()):
         return
     min_node = min([key for key in graph.keys() if key not in visited])
     return min_node
             
-            
+#BFS      
 import collections
 
 def bfs(graph):
     visited = set()
-    #flag = 0
     while min_num(visited, graph) is not None:
         node = min_num(visited, graph)
-        #if flag == 0:
-            #flag = 1
         visited.add(node)
         bfs_helper(visited, graph, node)
 
