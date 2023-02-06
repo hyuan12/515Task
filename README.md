@@ -1,14 +1,14 @@
 
 Hai Yuan hyuan12@stevens.edu
 
-# print vs. return
-
-The print statement output data to the console, while return statement return value to function.
-
 # bugs and issues
 
-no
+when trying to test the longest_lines function, it was saying, "No such file or 
+directory." I don't know why this is happening.
 
-# resolved issue
+# resolved issue 
 
-When programming, I don't know the exact function name, like how to round down float to the nearest int number. Then I google and find out. 
+when dealing with DPS and BFS the first time, there are some nodes that 
+haven't been visited. Then I realized that the problem is that these nodes don't 
+have any connection with the previous. So I need to start a loop searching with 
+the smallest node that hasn't yet visited.
