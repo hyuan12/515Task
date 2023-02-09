@@ -19,7 +19,10 @@ try:
         if s in ('stop', '^C', '^D'):
             print('Goodbye.')
             break
-        if len(s) != 1 or not s.isalpha():
+        if  s.isalpha() and len(s) != 1:
+            print('Please enter a single letter.')
+            continue
+        if not s.isalpha():
             print('Please enter a letter from the English alphabet.')
             continue
         s = s.lower()
@@ -29,5 +32,4 @@ except KeyboardInterrupt as e:
     print(e)
 except EOFError:
     print("Goodbye.")
-
 
