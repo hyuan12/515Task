@@ -20,7 +20,7 @@ try:
             print('Goodbye.')
             break
         if len(s) != 1 or not s.isalpha():
-            print('Please enter a single letter.')
+            print('Please enter a letter from the English alphabet.')
             continue
         s = s.lower()
         print(f"'{s}' is the {ordinal(s)} letter of the alphabet.")
