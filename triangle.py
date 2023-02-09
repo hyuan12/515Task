@@ -5,8 +5,4 @@ def show_triangle(n):
             return res
         res.append(" " * (n - i - 1) + "* " * (i + 1))
         return triangle(n, i + 1, res)
-
     print("\n".join(triangle(n)))
-
-
-show_triangle(0)
