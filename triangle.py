@@ -1,7 +1,10 @@
+def triangle(n):
+    if n == 0:
+        return []
+    prev_triangle = triangle(n - 1)
+    spaces = ' ' * (n - 1)
+    asterisks = '* ' * n
+    return prev_triangle + [spaces + asterisks]
+
 def show_triangle(n):
-    def triangle(n, i=0, res=[]):
-        if i == n:
-            return res
-        res.append(" " * (n - i - 1) + "* " * (i + 1))
-        return triangle(n, i + 1, res)
-    return ("\n".join(triangle(n)))
+    print('\n'.join(triangle(n)))
