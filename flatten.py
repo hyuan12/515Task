@@ -1,16 +1,13 @@
 
-def flatten(item):
-    l = []
-    for i in item:
-        helper(i,l)
-    print(l)
+def flatten(lst):
+    flatten_list = []
+    for i in lst:
+        if isinstance(i, list):
+            flatten_list.extend(flatten(i))
+        else:
+            flatten_list.append(i)
+    return flatten_list
 
-def helper(item, l):
-    if isinstance(item, list):
-        for s in item:
-            helper(s, l)
-    else:
-        l.append(item)
 
 
 
