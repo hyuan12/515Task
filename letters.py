@@ -1,3 +1,5 @@
+t = 'abcdefghijklmnopqrstuvwxyz'
+
 def ordinal(letter):
     index = t.index(letter) + 1
     if index in [11, 12, 13]:
@@ -33,4 +35,3 @@ except KeyboardInterrupt as e:
     print(e)
 except EOFError:
     print("Goodbye.")
-
