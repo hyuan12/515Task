@@ -1,7 +1,5 @@
-t = 'abcdefghijklmnopqrstuvwxyz'
-
 def ordinal(letter):
-    index = t.index(letter)
+    index = t.index(letter) + 1
     if index in [11, 12, 13]:
         return f"{index}th"
     if index % 10 == 1:
@@ -19,7 +17,10 @@ try:
         if s in ('stop', '^C', '^D'):
             print('Goodbye.')
             break
-        if  s.isalpha() and len(s) != 1:
+        if s.isspace():
+            print('Please enter a single letter.')
+            continue
+        if s.isalpha() and len(s) != 1:
             print('Please enter a single letter.')
             continue
         if not s.isalpha():
