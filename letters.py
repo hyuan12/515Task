@@ -1,7 +1,7 @@
 t = 'abcdefghijklmnopqrstuvwxyz'
 
 def ordinal(letter):
-    index = t.index(letter) + 1
+    index = t.index(letter)
     if index in [11, 12, 13]:
         return f"{index}th"
     if index % 10 == 1:
