@@ -19,7 +19,7 @@ try:
         if s in ('stop', '^C', '^D'):
             print('Goodbye.')
             break
-        if s.isspace():
+        if s.isspace() or not s:
             print('Please enter a single letter.')
             continue
         if s.isalpha() and len(s) != 1:
