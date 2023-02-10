@@ -5,5 +5,5 @@ def show_triangle(n):
         s = (" " * (n - i - 1) + "* " * (i + 1)).rstrip()
         res.append(s)
         return triangle(n, i + 1, res)
-    #print("\n".join(triangle(n)))
+    print("\n".join(triangle(n)))
     return "\n".join(triangle(n))
