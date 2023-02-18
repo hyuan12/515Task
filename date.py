@@ -14,11 +14,11 @@ class Date:
         """
         Returns True if the year is a leap year, False otherwise.
 
-        >>> d = Date(2020, 1, 1)
+        >>> d = Date(2024, 1, 1)
         >>> d.is_leap_year()
         True
 
-        >>> d = Date(1900, 1, 1)
+        >>> d = Date(2023, 1, 1)
         >>> d.is_leap_year()
         False
         """
@@ -31,11 +31,11 @@ class Date:
         """
         Returns True if the date is valid, False otherwise.
 
-        >>> d = Date(2021, 2, 28)
+        >>> d = Date(2023, 2, 28)
         >>> d.is_valid()
         True
 
-        >>> d = Date(2021, 2, 29)
+        >>> d = Date(2023, 2, 29)
         >>> d.is_valid()
         False
         """
@@ -54,15 +54,15 @@ class Date:
         """
         Update the Date object to refer to the next day.
 
-        >>> d = Date(2021, 2, 28)
+        >>> d = Date(2023, 2, 28)
         >>> d.tomorrow()
         >>> d
-        Date(2021, 03, 01)
+        Date(2023, 03, 01)
 
-        >>> d = Date(2021, 12, 31)
+        >>> d = Date(2022, 12, 31)
         >>> d.tomorrow()
         >>> d
-        Date(2022, 01, 01)
+        Date(2023, 01, 01)
         """
         if self.day < self.days_in_month():
             self.day += 1
@@ -76,13 +76,13 @@ class Date:
 
     def days_in_month(self):
         """
-        Returns the number of days in the month for the year of the Date object.
+        Returns the number of days in the month.
 
-        >>> d = Date(2021, 2, 28)
+        >>> d = Date(2023, 2, 1)
         >>> d.days_in_month()
         28
 
-        >>> d = Date(2020, 2, 1)
+        >>> d = Date(2024, 2, 1)
         >>> d.days_in_month()
         29
         """
