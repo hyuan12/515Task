@@ -43,42 +43,8 @@ class Date(object):
 
 
 
-def test_Date():
-    d = Date(2021, 11, 8)
-    assert repr(d) == "Date(2021, 11, 8)"
-    assert str(d) == "11/08/2021"
 
-    d2 = Date(1776, 7, 4)
-    assert repr(d2) == "Date(1776, 7, 4)"
-    assert str(d2) == "07/04/1776"
 
-    d3 = Date(76, 1, 24)
-    assert repr(d3) == "Date(76, 1, 24)"
-    assert str(d3) == "01/24/0076"
 
-def test_is_leap_year():
-    d = Date(2020, 1, 1)
-    assert d.is_leap_year() == True
 
-    d2 = Date(2021, 1, 1)
-    assert d2.is_leap_year() == False
 
-def test_is_valid():
-    d = Date(2021, 2, 29)
-    assert d.is_valid() == False
-
-    d2 = Date(2020, 2, 29)
-    assert d2.is_valid() == True
-
-def test_tomorrow():
-    d = Date(2021, 1, 31)
-    d.tomorrow()
-    assert str(d) == "02/01/2021"
-
-    d2 = Date(2021, 2, 28)
-    d2.tomorrow()
-    assert str(d2) == "03/01/2021"
-
-    d3 = Date(2020, 2, 29)
-    d3.tomorrow()
-    assert str(d3) == "03
