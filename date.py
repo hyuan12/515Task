@@ -1,114 +1,97 @@
-class Date(object):
+class Date:
     def __init__(self, year, month, day):
         self.year = year
         self.month = month
         self.day = day
 
-    def __str__(self):
-        return f"{self.month:02}/{self.day:02}/{self.year:04}"
-
     def __repr__(self):
-        return f"Date({self.year}, {self.month}, {self.day})"
+        return f"Date({self.year}, {self.month:02}, {self.day:02})"
+
+    def __str__(self):
+        return f"{self.month:02}/{self.day:02}/{self.year}"
 
     def is_leap_year(self):
+        """
+        Returns True if the year is a leap year, False otherwise.
+
+        >>> d = Date(2020, 1, 1)
+        >>> d.is_leap_year()
+        True
+
+        >>> d = Date(1900, 1, 1)
+        >>> d.is_leap_year()
+        False
+        """
         if self.year % 4 == 0 and (self.year % 100 != 0 or self.year % 400 == 0):
             return True
-        return False
+        else:
+            return False
 
     def is_valid(self):
+        """
+        Returns True if the date is valid, False otherwise.
+
+        >>> d = Date(2021, 2, 28)
+        >>> d.is_valid()
+        True
+
+        >>> d = Date(2021, 2, 29)
+        >>> d.is_valid()
+        False
+        """
         if self.month < 1 or self.month > 12:
             return False
-        if self.day < 1 or self.day > 31:
+
+        if self.day < 1 or self.day > self.days_in_month():
             return False
-        if self.month == 2 and self.is_leap_year():
-            return self.day <= 29
-        elif self.month == 2:
-            return self.day <= 28
-        elif self.month in [4, 6, 9, 11]:
-            return self.day <= 30
-        else:
-            return self.day <= 31
+
+        if self.year == 0:
+            return False
+
+        return True
 
     def tomorrow(self):
-        days_in_month = [31, 28 + int(self.is_leap_year()), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        if self.day == days_in_month[self.month - 1]:
-            if self.month == 12:
-                self.year += 1
-                self.month = 1
-            else:
-                self.month += 1
-            self.day = 1
-        else:
+        """
+        Update the Date object to refer to the next day.
+
+        >>> d = Date(2021, 2, 28)
+        >>> d.tomorrow()
+        >>> d
+        Date(2021, 03, 01)
+
+        >>> d = Date(2021, 12, 31)
+        >>> d.tomorrow()
+        >>> d
+        Date(2022, 01, 01)
+        """
+        if self.day < self.days_in_month():
             self.day += 1
+        else:
+            self.day = 1
+            if self.month < 12:
+                self.month += 1
+            else:
+                self.month = 1
+                self.year += 1
 
+    def days_in_month(self):
+        """
+        Returns the number of days in the month for the year of the Date object.
 
-# doctests
-def test_date():
-    d = Date(2022, 2, 18)
-    assert repr(d) == "Date(2022, 2, 18)"
-    assert str(d) == "02/18/2022"
+        >>> d = Date(2021, 2, 28)
+        >>> d.days_in_month()
+        28
 
-    d2 = Date(1999, 12, 31)
-    assert repr(d2) == "Date(1999, 12, 31)"
-    assert str(d2) == "12/31/1999"
-
-    d3 = Date(2000, 2, 29)
-    assert d3.is_leap_year() == True
-    d4 = Date(1900, 2, 29)
-    assert d4.is_leap_year() == False
-
-    assert d.is_valid() == True
-    assert d2.is_valid() == True
-    assert d3.is_valid() == True
-    assert d4.is_valid() == False
-
-    d.tomorrow()
-    assert str(d) == "02/19/2022"
-    d.tomorrow()
-    assert str(d) == "02/20/2022"
-
-    d5 = Date(2022, 2, 28)
-    d5.tomorrow()
-    assert str(d5) == "03/01/2022"
-    d6 = Date(2020, 2, 28)
-    d6.tomorrow()
-    assert str(d6) == "02/29/2020"
-    d6.tomorrow()
-    assert str(d6) == "03/01/2020"
-
-    d = Date(2022, 2, 18)
-    assert repr(d) == "Date(2022, 2, 18)"
-    assert str(d) == "02/18/2022"
-
-    d2 = Date(1999, 12, 31)
-    assert repr(d2) == "Date(1999, 12, 31)"
-    assert str(d2) == "12/31/1999"
-
-    d3 = Date(2000, 2, 29)
-    assert d3.is_leap_year() == True
-    d4 = Date(1900, 2, 29)
-    assert d4.is_leap_year() == False
-
-    assert d.is_valid() == True
-    assert d2.is_valid() == True
-    assert d3.is_valid() == True
-    assert d4.is_valid() == False
-
-    d.tomorrow()
-    assert str(d) == "02/19/2022"
-    d.tomorrow()
-    assert str(d) == "02/20/2022"
-
-    d5 = Date(2022, 2, 28)
-    d5.tomorrow()
-    assert str(d5) == "03/01/2022"
-    d6 = Date(2020, 2, 28)
-    d6.tomorrow()
-    assert str(d6) == "02/29/2020"
-    d6.tomorrow()
-    assert str(d6) == "03/01/2020"
-test_date()
-
-
-
-
+        >>> d = Date(2020, 2, 1)
+        >>> d.days_in_month()
+        29
+        """
+        if self.month == 2:
+            if self.is_leap_year():
+                return 29
+            else:
+                return 28
+        elif self.month in {4, 6, 9, 11}:
+            return 30
+        else:
+            return 31
