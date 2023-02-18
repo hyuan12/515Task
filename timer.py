@@ -6,27 +6,27 @@ class TimerError(Exception):
 class Timer:
     def __init__(self):
         self._start_time = None
-        self._total_time = 0
+        self._elapsed_time = 0
 
     def start(self):
-        """Start a new timer"""
         if self._start_time is not None:
-            raise TimerError("Timer is already running")
-        self._start_time = time.time()
+            raise TimerError("timer is already running")
+        self._start_time = time.monotonic()
 
     def stop(self):
-        """Stop the timer, and add the elapsed time to the total time"""
         if self._start_time is None:
-            raise TimerError("Timer is not running")
-        elapsed_time = time.time() - self._start_time
-        self._total_time += elapsed_time
+            raise TimerError("timer is not running")
+        elapsed_time = time.monotonic() - self._start_time
+        self._elapsed_time += elapsed_time
         self._start_time = None
 
     def reset(self):
-        """Reset the timer"""
         self._start_time = None
-        self._total_time = 0
+        self._elapsed_time = 0
 
     def total(self):
-        """Return the total elapsed time"""
-        return self._total_time
+        if self._start_time is not None:
+            current_elapsed_time = time.monotonic() - self._start_time
+            return self._elapsed_time + current_elapsed_time
+        else:
+            return self._elapsed_time
