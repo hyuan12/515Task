@@ -42,8 +42,41 @@ class Date(object):
             self.day += 1
 
 
+# doctests
+def test_date():
+    d = Date(2022, 2, 18)
+    assert repr(d) == "Date(2022, 2, 18)"
+    assert str(d) == "02/18/2022"
 
+    d2 = Date(1999, 12, 31)
+    assert repr(d2) == "Date(1999, 12, 31)"
+    assert str(d2) == "12/31/1999"
 
+    d3 = Date(2000, 2, 29)
+    assert d3.is_leap_year() == True
+    d4 = Date(1900, 2, 29)
+    assert d4.is_leap_year() == False
+
+    assert d.is_valid() == True
+    assert d2.is_valid() == True
+    assert d3.is_valid() == True
+    assert d4.is_valid() == False
+
+    d.tomorrow()
+    assert str(d) == "02/19/2022"
+    d.tomorrow()
+    assert str(d) == "02/20/2022"
+
+    d5 = Date(2022, 2, 28)
+    d5.tomorrow()
+    assert str(d5) == "03/01/2022"
+    d6 = Date(2020, 2, 28)
+    d6.tomorrow()
+    assert str(d6) == "02/29/2020"
+    d6.tomorrow()
+    assert str(d6) == "03/01/2020"
+
+test_date()
 
 
 
