@@ -11,12 +11,12 @@ def pequod(f):
 
 
 def find_dotcoms(s):
-    # match domain names that end in ".com" and extract the domain name
-    pattern = r'(?:https?://)?([\w-]+)\.com'
+    # Match domain names that end with ".com"
+    pattern = r"\b([a-zA-Z0-9-]+)\.com\b"
+    # Find all non-overlapping matches of the pattern in the string
     matches = re.findall(pattern, s)
-
-    # remove duplicate domain names and return as a list
-    return list(set(matches))
+    # Return the list of matched domain names without the ".com" suffix
+    return matches
 
 
 def palindrome_re(n):
