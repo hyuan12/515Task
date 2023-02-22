@@ -1,14 +1,13 @@
 import re
 
+import re
+
 def pequod(f):
-    # read contents of the file
     with open(f) as file:
         contents = file.read()
-
-    # search for the phrase "white whale" ignoring spaces and capitalization
-    count = len(re.findall(r'white\s+whale', contents, re.IGNORECASE))
-
+    count = len(re.findall(r"(?i)\bwhite\s+whale(?:'s)?\b", contents))
     return count
+
 
 
 def find_dotcoms(s):
