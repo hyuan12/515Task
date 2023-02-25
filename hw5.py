@@ -35,7 +35,7 @@ def palindrome_direct(s):
     return s == s[::-1]
 
 
-s = "pets.com google.com foo.org www.yahoo.com"
-print(find_dotcoms(s))
-r = palindrome_re(2)
-print(bool(re.fullmatch(r, 'ab')))
+# s = "pets.com google.com foo.org www.yahoo.com"
+# print(find_dotcoms(s))
+# r = palindrome_re(2)
+# print(bool(re.fullmatch(r, 'ab')))
