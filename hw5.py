@@ -23,19 +23,21 @@ def find_dotcoms(s):
 
 
 def palindrome_re(n):
-    if n % 2 == 1:
-        # odd-length palindrome
-        return r'^([a-z])' + r'.' * (n//2) + r'\1$'
+    if n == 1:
+        return r'.'
+    elif n == 2:
+        return r'(.)\1'
     else:
-        # even-length palindrome
-        return r'^(?:([a-z])' + r'.' * ((n//2)-1) + r'\1' + r'.' * ((n//2)-1) + r'\1)$'
+        inner_re = palindrome_re(n - 2)
+        return r'(.).{%d}\1%s\1.' % (n - 2, inner_re)
+
 
 
 def palindrome_direct(s):
     return s == s[::-1]
 
 
-# s = "pets.com google.com foo.org www.yahoo.com"
-# print(find_dotcoms(s))
-# r = palindrome_re(2)
-# print(bool(re.fullmatch(r, 'ab')))
+s = "pets.com google.com foo.org www.yahoo.com"
+print(find_dotcoms(s))
+r = palindrome_re(2)
+print(bool(re.fullmatch(r, 'ab')))
