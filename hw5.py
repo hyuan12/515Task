@@ -23,15 +23,9 @@ def find_dotcoms(s):
 
 
 def palindrome_re(n):
-    if n == 1:
-        return r'.'
-    elif n == 2:
-        return r'(.)\1'
-    else:
-        inner_re = palindrome_re(n - 2)
-        return r'(.).{%d}\1%s\1.' % (n - 2, inner_re)
-
-
+    # generate a regular expression that matches palindromes of length n
+    mid = (n // 2) + 1
+    return r'^(?:(.)(?:(?!\1)(.)){%d}\1|(.){%d})$' % ((mid-1)*2, n)
 
 def palindrome_direct(s):
     return s == s[::-1]
