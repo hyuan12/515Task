@@ -10,8 +10,7 @@ def pequod(f):
 
 
 def find_dotcoms(s):
-    # define the regular expression pattern to match domain names that end in ".com"
-    pattern = r'\b([a-zA-Z0-9\-]+\.)+([a-zA-Z0-9\-]+)\.com\b'
+    pattern = r'\b([a-zA-Z0-9]+\.)+([a-zA-Z0-9]+)\.com\b'
 
     # search for all matches in the input string
     matches = re.findall(pattern, s)
@@ -22,16 +21,21 @@ def find_dotcoms(s):
     # return the list of matches
     return domains
 
+
 def palindrome_re(n):
-    # generate a regular expression that matches palindromes of length n
-    mid = (n // 2) + 1
-    return r'^(?:(.)(?:(?!\1)(.)){%d}\1|(.){%d})$' % ((mid-1)*2, n)
+    if n % 2 == 1:
+        # odd-length palindrome
+        return r'^([a-z])' + r'.' * (n//2) + r'\1$'
+    else:
+        # even-length palindrome
+        return r'^(?:([a-z])' + r'.' * ((n//2)-1) + r'\1' + r'.' * ((n//2)-1) + r'\1)$'
+
 
 def palindrome_direct(s):
     return s == s[::-1]
 
 
-# s = "eff.org a.b.c.com www19.site.com bad.com.eu 1-2.3-4.com"
-# print(find_dotcoms(s))
-# r = palindrome_re(2)
-# print(bool(re.fullmatch(r, 'ab')))
+s = "pets.com google.com foo.org www.yahoo.com"
+print(find_dotcoms(s))
+r = palindrome_re(2)
+print(bool(re.fullmatch(r, 'ab')))
