@@ -10,16 +10,14 @@ def pequod(f):
 
 
 def find_dotcoms(s):
-    pattern = r'\b([a-zA-Z0-9]+\.)+([a-zA-Z0-9]+)\.com\b'
+    # Define the regular expression to match domain names ending in .com
+    pattern = r'\b([a-zA-Z0-9-]+)\.com\b'
 
-    # search for all matches in the input string
+    # Use re.findall() to extract all matches in the input string
     matches = re.findall(pattern, s)
 
-    # extract just the second capture group (i.e., the domain name without the ".com" suffix)
-    domains = [match[1] for match in matches]
-
-    # return the list of matches
-    return domains
+    # Return the list of domain names (without the .com suffix)
+    return matches
 
 
 def palindrome_re(n):
