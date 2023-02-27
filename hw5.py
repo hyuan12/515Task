@@ -1,7 +1,5 @@
 import re
 
-import re
-
 def pequod(f):
     with open(f) as file:
         contents = file.read()
@@ -12,11 +10,7 @@ def pequod(f):
 def find_dotcoms(s):
     # Define the regular expression to match domain names ending in .com
     pattern = r'\b([a-zA-Z0-9-]+)\.com\b'
-
-    # Use re.findall() to extract all matches in the input string
     matches = re.findall(pattern, s)
-
-    # Return the list of domain names (without the .com suffix)
     return matches
 
 
@@ -24,6 +18,7 @@ def palindrome_re(n):
     # generate a regular expression that matches palindromes of length n
     mid = (n // 2) + 1
     return r'^(?:(.)(?:(?!\1)(.)){%d}\1|(.){%d})$' % ((mid-1)*2, n)
+
 
 def palindrome_direct(s):
     return s == s[::-1]
