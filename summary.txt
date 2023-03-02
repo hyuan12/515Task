@@ -1,0 +1,94 @@
+/**
+Here are five different input lists that I use to test sorting algorithms:
+**/
+
+Random List: This list contains randomly generated numbers, which makes it a good representative of an unstructured data set that has no inherent order. 
+
+Sorted List: This list contains numbers in ascending order, making it a good representative of a partially sorted data set. 
+
+Reversed List: This list contains numbers in descending order, making it a good representative of a data set that needs to be sorted in reverse order.
+
+Nearly Sorted List: This list contains a nearly sorted list of numbers, with only a few elements out of place. It is a good representative of data sets that are almost sorted but require a few adjustments. 
+
+Duplicate List: This list contains duplicate elements, making it a good representative of data sets with many duplicates. 
+
+
+/**
+Here is the output of one test case:
+**/
+
+
+random_list:
+bubble_sort:    list_size = 100 comparisons = 4950 swaps = 2589    elapsed_time: 0.000349
+selection_sort: list_size = 100 comparisons = 4950 swaps = 99    elapsed_time: 0.000176
+insertion_sort: list_size = 100 comparisons = 99 swaps = 99    elapsed_time: 0.000009
+quick_sort:     list_size = 100 comparisons = 4950 swaps = 4950    elapsed_time: 0.000365
+merge_sort:     list_size = 100 comparisons = 21 swaps = 21    elapsed_time: 0.000118
+
+sorted_list:
+bubble_sort:    list_size = 100 comparisons = 4950 swaps = 0    elapsed_time: 0.000198
+selection_sort: list_size = 100 comparisons = 4950 swaps = 99    elapsed_time: 0.000173
+insertion_sort: list_size = 100 comparisons = 99 swaps = 99    elapsed_time: 0.000006
+quick_sort:     list_size = 100 comparisons = 4950 swaps = 4950    elapsed_time: 0.000338
+merge_sort:     list_size = 100 comparisons = 21 swaps = 21    elapsed_time: 0.000111
+
+reversed_list:
+bubble_sort:    list_size = 100 comparisons = 4950 swaps = 4950    elapsed_time: 0.000418
+selection_sort: list_size = 100 comparisons = 4950 swaps = 99    elapsed_time: 0.000171
+insertion_sort: list_size = 100 comparisons = 99 swaps = 99    elapsed_time: 0.000005
+quick_sort:     list_size = 100 comparisons = 4950 swaps = 4950    elapsed_time: 0.000338
+merge_sort:     list_size = 100 comparisons = 21 swaps = 21    elapsed_time: 0.000108
+
+duplicate_list:
+bubble_sort:    list_size = 100 comparisons = 4950 swaps = 10    elapsed_time: 0.000198
+selection_sort: list_size = 100 comparisons = 4950 swaps = 99    elapsed_time: 0.000173
+insertion_sort: list_size = 100 comparisons = 99 swaps = 99    elapsed_time: 0.000006
+quick_sort:     list_size = 100 comparisons = 4950 swaps = 4950    elapsed_time: 0.000337
+merge_sort:     list_size = 100 comparisons = 21 swaps = 21    elapsed_time: 0.000109
+
+duplicate_list:
+bubble_sort:    list_size = 100 comparisons = 5995 swaps = 2871    elapsed_time: 0.000404
+selection_sort: list_size = 100 comparisons = 5995 swaps = 109    elapsed_time: 0.000206
+quick_sort:     list_size = 100 comparisons = 109 swaps = 109    elapsed_time: 0.000007
+insertion_sort: list_size = 100 comparisons = 109 swaps = 109    elapsed_time: 0.000007
+quick_sort:     list_size = 100 comparisons = 5995 swaps = 5995    elapsed_time: 0.000492
+merge_sort:     list_size = 100 comparisons = 21 swaps = 21    elapsed_time: 0.000123
+
+/**
+For each of these input lists, we can instrument the sorting algorithms to count the number of comparisons and swaps. Here are the statistics for three sorting algorithms:
+**/
+
+Bubble Sort:
+Random List: comparisons = n^2, swaps = n^2
+Sorted List: comparisons = n, swaps = 0
+Reversed List: comparisons = n^2, swaps = n^2
+Nearly Sorted List: comparisons = n, swaps = 0
+Duplicate List: comparisons = n^2, swaps = n^2
+
+Selection Sort:
+Random List: comparisons = n^2, swaps = n
+Sorted List: comparisons = n^2, swaps = 0
+Reversed List: comparisons = n^2, swaps = n
+Nearly Sorted List: comparisons = n^2, swaps = n
+Duplicate List: comparisons = n^2, swaps = n
+
+Merge Sort:
+Random List: comparisons = n log(n), swaps = n log(n)
+Sorted List: comparisons = n log(n), swaps = n log(n)
+Reversed List: comparisons = n log(n), swaps = n log(n)
+Nearly Sorted List: comparisons = n log(n), swaps = n log(n)
+Duplicate List: comparisons = n log(n), swaps = n log(n)
+
+Insertion sort:
+Random List: comparisons = n^2, swaps = n^2
+Sorted List: comparisons = n, swaps = 0
+Reversed List: comparisons = n^2, swaps = n^2
+Nearly Sorted List: comparisons = n^2, swaps = n
+Duplicate List: comparisons = n^2, swaps = n^2
+
+Quick sort:
+Random List: comparisons = n log(n), swaps = n log(n)
+Sorted List: comparisons = n log(n), swaps = n log(n)
+Reversed List: comparisons = n log(n), swaps = n log(n)
+Nearly Sorted List: comparisons = n log(n), swaps = n log(n)
+Duplicate List: comparisons = n^2, swaps = n log(n)
