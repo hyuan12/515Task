@@ -1,5 +1,4 @@
 import time
-
 def bubble_sort(arr):
     start = time.time()
     n = len(arr)
@@ -81,44 +80,60 @@ def quick_sort(arr):
     end = time.time()
     return (count_number,count_number,end - start)
 
-def quick(arr):
-    if len(arr) <= 1:
-        return arr
-    else:
-        pivot = arr[0]
-        left = []
-        right = []
-        for i in range(1, len(arr)):
+def quick(arr, start=0, end=None):
+    if end is None:
+        end = len(arr) - 1
+    if start < end:
+        pivot = partition(arr, start, end)
+        quick(arr, start, pivot - 1)
+        quick(arr, pivot + 1, end)
+    return arr
+
+def partition(arr, start, end):
+    pivot = arr[end]
+    i = start - 1
+    for j in range(start, end):
+        if arr[j] < pivot:
             global count_number
             count_number += 1
-            if arr[i] < pivot:
-                left.append(arr[i])
-            else:
-                right.append(arr[i])
-        return quick(left) + [pivot] + quick(right)
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1], arr[end] = arr[end], arr[i + 1]
+    return i + 1
 
+
+# def insertion_sort(arr):
+#     start = time.time()
+#     num = 0
+#     for i in range(1, len(arr)):
+#         key = arr[i]
+#         j = i - 1
+#         num += 1
+#
+#         while j >= 0 and arr[j] > key:
+#             arr[j+1] = arr[j]
+#             j -= 1
+#         arr[j+1] = key
+#
+#     end = time.time()
+#     return (num, num, end - start)
 
 def insertion_sort(arr):
-    start = time.time()
     num = 0
-    mm = 0
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-        num += 1
-
-        while j >= 0 and arr[j] > key:
-            arr[j+1] = arr[j]
+    start = time.time()
+    for i in range(1,len(arr)):
+        j = i
+        while j > 0:
+            num += 1
+            if arr[j] < arr[j-1]:
+                arr[j-1],arr[j] = arr[j],arr[j-1]
             j -= 1
-        arr[j+1] = key
-
     end = time.time()
     return (num, num, end - start)
 
 
-#generate_test_list
+    #generate test lists
 import random
-
 def generate_random_list(size):
     return [random.randint(0, 100) for _ in range(size)]
 
